@@ -1,0 +1,14 @@
+version: '2'
+services:
+    easy_pay-app:
+        image: easy_pay
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://easy_pay-mysql:3306/easy_pay?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    easy_pay-mysql:
+        extends:
+            file: mysql.yml
+            service: easy_pay-mysql
